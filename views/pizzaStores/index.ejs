@@ -1,0 +1,38 @@
+<% layout('layouts/boilerplate') %>
+    <h1>All Pizza Store</h1>
+    <div>
+      <a href="/pizzaStores/new">Add Pizza Store</a>
+    </div>
+    <% for (let pizzaStore of pizzaStores) { %>
+      <div class="card mb-3">
+        <div class="row">
+          <div class="col-md-4">
+            <%if(pizzaStore.images.length) {%>
+              <img class="img-fluid" alt="" src="<%=pizzaStore.images[0].url%>">
+              <% }else {%>
+              <img class="img-fluid" alt=""
+                  src="https://res.cloudinary.com/dmlhm4hjm/image/upload/v1636681135/PizzaStore/dga932oblny73yrbsxsx.jpg">
+              <% } %>
+          </div>
+          <div class="col-mg-8">
+            <div class="card-body">
+              <h5 class="card-title">
+                <%= pizzaStore.storeName %>
+              </h5>
+              <p class='card-text'>
+                <%= pizzaStore.description %>
+              </p>
+              <p class="card-text">
+                <small class="text-muted">
+                  <%= pizzaStore.location %>
+                </small>
+              </p>
+              <a class="btn btn-primary" href='/pizzaStores/<%= pizzaStore._id %>'>View <%= pizzaStore.storeName %></a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    <% } %>
+
+  </body>
